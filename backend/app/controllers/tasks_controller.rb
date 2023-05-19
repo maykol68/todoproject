@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
     def index
-      @tasks = Task.order(name: :asc)
+    @tasks = Task.order(name: :asc)
     end
 
     def show
@@ -10,35 +10,35 @@ class TasksController < ApplicationController
 
     def new
         @task = Task.new
-        
     end
+
     def edit
-        authorize! task
     end
+
     def create
         @task = Task.new(task_params)
         
             if @task.save
-                redirect_to tasks_params, notice: 'Task was successfully created.'
+                render :show, status: :created, location: @task
                 
             else
-                render :new, status: :unprocessable_entity
+                render json: @task.errors, status: :unprocessable_entity
             end
     end
 
     def update
-        authorize! task
+
         if task.update(task_params)
 
-            redirect_to tasks_params, notice: 'Task was successfully updated.'
+            render :show, status: :ok, location: @task
         else
-            render :edit, status: :unprocessable_entity
+            render json: @task.errors, status: :unprocessable_entity
+        end
     end
 
     def destroy
-        authorize! task
         task.destroy
-        redirect_to tasks_path, notice: 'Task was successfully destroyed.' status: :see_other
+        head :no_content #status: :see_other
     end
 
     private

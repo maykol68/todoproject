@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyString
+arreglar la puerta:
+  title:  puerta mala
+  description: la chapa esta oxidada 
   start_date: 2023-05-19 08:11:06
   end_date: 2023-05-19 08:11:06
+  user_id: Diana
 
-two:
-  title: MyString
-  description: MyString
+arreglar el teclado:
+  title: teclado malo
+  description: no sirve la mitad de las teclas 
   start_date: 2023-05-19 08:11:06
   end_date: 2023-05-19 08:11:06
+  user_id: Andres
